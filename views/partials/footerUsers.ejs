@@ -1,0 +1,37 @@
+<script>
+
+    let permissionsInputs = document.querySelectorAll('input[name=permissions]');
+    permissionsInputs.forEach(x=>{
+        x.addEventListener('change', (e) => {
+            checkPermissions(e.target)
+        })
+    })  
+    function checkPermissions(input){
+        let createSubscriptions = document.getElementById('createSubscriptions');
+        let deleteSubscriptions = document.getElementById('deleteSubscriptions');
+        let updateSubscriptions = document.getElementById('updateSubscriptions');
+        let createMovies = document.getElementById('createMovies');
+        let deleteMovies = document.getElementById('deleteMovies');
+        let updateMovies = document.getElementById('updateMovies');
+        if(input.id == 'createSubscriptions' || input.id == 'deleteSubscriptions' || input.id == 'updateSubscriptions')
+        {
+            let viewSubscriptions = document.getElementById('viewSubscriptions');
+            viewSubscriptions.checked = true; 
+        }
+        else if((input.id == 'viewSubscriptions') && (createSubscriptions.checked || deleteSubscriptions.checked || updateSubscriptions.checked))
+        {
+            let viewSubscriptions = document.getElementById('viewSubscriptions');
+            viewSubscriptions.checked = true; 
+        }
+        else if(input.id == 'createMovies' || input.id == 'deleteMovies' || input.id == 'updateMovies')
+        {
+            let viewMovies = document.getElementById('viewMovies');
+            viewMovies.checked = true; 
+        }
+        else if((input.id == 'viewMovies') && (createMovies.checked || deleteMovies.checked || updateMovies.checked))
+        {
+            let viewMovies = document.getElementById('viewMovies');
+            viewMovies.checked = true; 
+        }
+    } 
+</script>

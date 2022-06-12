@@ -1,0 +1,17 @@
+<%-include("partials/header", {title:'Login'}) %>
+<h2>Login Page</h2>
+<div class="form_container">
+    <form method="POST" action="/users">
+        <label for="username">User name: </label>
+        <input type="text" id="username" name="username" placeholder="" required/>
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" placeholder="" required/>
+        <br>
+        <button type="submit">Login</button>
+    </form>
+</div>
+<p>
+    New User? <a href="/users/createAccount">Create Account</a>
+</p>
+<%-include("partials/footer", {}) %>

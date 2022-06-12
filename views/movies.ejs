@@ -1,0 +1,58 @@
+<%-include("partials/header", {title:'Movies'}) %>
+<%-include("partials/menu", {active:baseUrl,admin:admin}) %>
+<h2>Movies</h2>
+<%-include("partials/menuMovies", {active:path,permissions:permissions,admin:admin}) %>
+<br>
+<div class="form_container">
+    <form method="GET" action="/movies">
+        <label for="movie">Find Movie: </label>
+        <input type="text" id="movie" name="movie" placeholder="" required/>
+        <button type="submit">Find</button>
+    </form>
+</div>
+<br><hr><br>
+<ul class="listT1">
+    <% movies.forEach(movie => { %>
+        <li class="itemT1">
+            <h3 class="margB1"><%=movie.name%>, <%=movie.year%></h3>
+            <span class="margB1">genres: <%=movie.genres%></span>
+           <div class="wrapT1">
+               <div class="image"><img src="<% if(movie.image){%><%=movie.image%><%}else{%>../images/movie.jpg<%}%>" alt="image"/></div>
+               <div class="text">
+                   <p class="boldType">Subscriptions Watched</p>
+                   <% if(movie.subscriptions.length >0){%>
+                   <ul>
+                    <% movie.subscriptions.forEach(subscription => { %>
+                       <li>
+                           <a href="/subscriptions/<%=subscription.memberId%>"><%=subscription.memberName%></a>, <%=subscription.date%>
+                       </li>
+                    <%});%>
+                   </ul>
+                   <%}%>
+               </div>
+              
+           </div>
+            <ul class="nav_list left">
+                <%if(admin || permissions.includes("Update Movies")){%>
+                <li><a href="/movies/updateMovie/<%=movie._id%>" class="nav_link">Edit</a></li>
+                <%}%>
+                <%if(admin || permissions.includes("Delete Movies")){%>
+                <li><button onclick="deleteMovie('<%=movie._id%>');" class="nav_link">Delete</button></li>
+                <%}%>
+            </ul>
+
+        </li>    
+    <%});%>
+    
+</ul>
+
+
+<script>
+    function deleteMovie(id){
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('POST', "http://localhost:3000/movies/deleteMovie/" + id,true);
+        xhttp.send();
+        window.location.assign('/movies')
+    }
+</script>
+<%-include("partials/footer", {}) %>

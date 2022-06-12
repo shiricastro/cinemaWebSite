@@ -1,0 +1,98 @@
+<%-include("partials/header", {title:'Subscriptions'}) %>
+<%-include("partials/menu", {active:baseUrl,admin:admin}) %>
+<h2>Subscriptions</h2>
+<%-include("partials/menuSubscriptions", {active:path,permissions:permissions,admin:admin}) %>
+<br>
+
+<ul class="listT1">
+    <% members.forEach(member => { %>
+        <li class="itemT1">
+            <h3 class="margT0"><%=member.name%></h3>
+            Email: <%=member.email%><br>
+            City: <%=member.city%><br><br>
+            <ul class="nav_list left">
+                <%if(admin || permissions.includes("Update Subscriptions")){%>
+                <li><a href="/subscriptions/updateMember/<%=member._id%>" class="nav_link">Edit</a></li>
+                <%}%>
+                <%if(admin || permissions.includes("Delete Subscriptions")){%>
+                <li><button onclick="deleteMember('<%=member._id%>');" class="nav_link">Delete</button></li>
+                <%}%>
+            </ul>
+            <br>
+            <div class="itemT1">
+                <h4 class="margT0">Movies Watched</h4>
+                <%if(admin || permissions.includes("Create Subscriptions")){%>
+                    <div class="subscripe_section">
+                        <button onclick="openSubscripeForm(event);" class="nav_link">Subscribe to new movie</button>
+                        <div class="subscribe_form itemT1">
+                            <h4 class="margB1 margT0">Add a new movie</h4>
+                            <div class="form_container">
+                                <form method="POST" action="/subscriptions">
+                                    <input type="hidden" name="memberId" value="<%=member._id%>"/>
+                                    <input type="hidden" name="subscriptionId" value="<% if(member.subscriptionId){%><%=member.subscriptionId%><%}%>"/>
+                                    <label for="movieId">Movie: </label>
+                                    <select name="movieId" id="movieId" required>
+                                        <option value=""></option>
+                                        <%
+                                        if(member.movies && member.movies.length>0){
+                                            let memberMovies = member.movies.map(x=>{return x.movieId});
+                                            movies.forEach(movie=>{
+                                               if(!memberMovies.includes(movie._id)){
+                                             
+                                        %>
+                                            <option value="<%=movie._id%>"><%=movie.name%></option>
+                                        <%
+                                            
+                                            }})
+                                        }else{
+                                            movies.forEach(movie=>{
+                                        %>
+                                                <option value="<%=movie._id%>"><%=movie.name%></option>
+                                        <%
+                                            }) 
+                                        }
+                                        %>
+                                    </select>
+                                    
+                                    
+                                    <br>
+                                    <label for="date">Date: </label>
+                                    <input type="date" id="date" name="date" placeholder="" required/>
+                                    <br>
+                                    <button class="nav_link margT1" type="submit">Subscribe</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>  
+                    <br>
+                <%}%>
+                <% if(member.movies){%>
+                
+                <ul>
+                    <% member.movies.forEach(movie=>{%>
+                            <li>
+                                <a href="/movies/<%=movie.movieId%>"><%=movie.movieName%></a>, <%=movie.date%>
+                            </li>
+                    <%})%>
+                </ul>
+                <%}%>
+            </div>
+        </li>    
+    <%});%>
+    
+</ul>
+
+
+<script>
+    function deleteMember(id){
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('POST', "http://localhost:3000/subscriptions/deleteMember/" + id,true);
+        xhttp.send();
+        window.location.assign('/subscriptions')
+    }
+   
+    function openSubscripeForm(e){
+        e.target.nextElementSibling.classList.toggle('show');
+    }
+</script>
+<%-include("partials/footer", {}) %>

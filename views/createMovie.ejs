@@ -1,0 +1,32 @@
+<%-include("partials/header", {title:'Create Movie'}) %>
+<%-include("partials/menu", {active:baseUrl,admin:admin}) %>
+<h2>Movies</h2>
+<%-include("partials/menuMovies", {active:path}) %>
+<br>
+<div class="form_container">
+    <form method="POST" action="/movies/createMovie">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" placeholder="" required/>
+        <br>
+        <label for="genres">Genres: </label>
+        <input type="text" id="genres" name="genres" placeholder="" required/>
+        <br>
+        <label for="image">Image Url: </label>
+        <input type="text" id="image" name="image" placeholder="" required/>
+        <br>
+        <label for="premiered">Premiered: </label>
+        <input type="date" id="premiered" name="premiered" placeholder="" required/>
+     
+        
+
+        <br><br>
+        <ul class="nav_list left">
+            <li><button class="nav_link" type="submit">Save</button></li>
+            <li><a href="/movies" class="nav_link" >Cancel</a></li>
+        </ul>
+        
+        
+    </form>
+</div>
+
+<%-include("partials/footer", {}) %>

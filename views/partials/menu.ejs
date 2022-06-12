@@ -1,0 +1,14 @@
+<nav>
+    <ul class="nav_list">
+      <% if(admin || permissions.includes("View Movies")){%>
+      <li><a class="nav_link <% if(active == 'movies'){%>on<%}%>" href="/movies">Movies</a></li>
+      <%}%>
+      <% if(admin || permissions.includes("View Subscriptions")){%>
+      <li><a class="nav_link <% if(active == 'subscriptions'){%>on<%}%>" href="/subscriptions">Subscriptions</a></li>
+      <%}%>
+      <% if(admin){ %>
+      <li><a class="nav_link <% if(active == 'users'){%>on<%}%>" href="/users/managmentUsers">Users Management</a></li>
+      <%}%>
+      <li><a class="nav_link" href="/users/logout">Logout</a></li>
+    </ul>
+  </nav>

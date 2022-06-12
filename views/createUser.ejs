@@ -1,0 +1,60 @@
+<%-include("partials/header", {title:'Users Managment'}) %>
+<%-include("partials/menu", {active:baseUrl,admin:admin}) %>
+<h2>Users</h2>
+<%-include("partials/menuUserManagment", {active:path}) %>
+<br>
+<hr>
+<h3>Add New User</h2>
+<div class="form_container">
+    <form method="POST" action="/users/createUser">
+        <label for="firstName">First name: </label>
+        <input type="text" id="firstName" name="firstName" placeholder="" required/>
+        <br>
+        <label for="lastName">Last name: </label>
+        <input type="text" id="lastName" name="lastName" placeholder="" required/>
+        <br>
+        <label for="username">User name: </label>
+        <input type="text" id="username" name="username" placeholder="" required/>
+        <br>
+        <label for="sessionTimeOut">Session Time Out (Minuts): </label>
+        <input type="text" id="sessionTimeOut" name="sessionTimeOut" placeholder="" required/>
+        <br>
+        <span>Permissions: </span><br>
+        <input type="checkbox" id="viewSubscriptions" name="permissions" value="View Subscriptions" >
+        <label for="viewSubscriptions">View Subscriptions</label>
+        <br>
+        <input type="checkbox" id="createSubscriptions" name="permissions" value="Create Subscriptions">
+        <label for="createSubscriptions">Create Subscriptions</label>
+        <br>
+        <input type="checkbox" id="deleteSubscriptions" name="permissions" value="Delete Subscriptions">
+        <label for="deleteSubscriptions">Delete Subscriptions</label>
+        <br>
+        <input type="checkbox" id="updateSubscriptions" name="permissions" value="Update Subscriptions">
+        <label for="updateSubscriptions">Update Subscriptions</label>
+        <br>
+        <input type="checkbox" id="viewMovies" name="permissions" value="View Movies">
+        <label for="viewMovies">View Movies</label>
+        <br>
+        <input type="checkbox" id="createMovies" name="permissions" value="Create Movies">
+        <label for="createMovies">Create Movies</label>
+        <br>
+        <input type="checkbox" id="deleteMovies" name="permissions" value="Delete Movies">
+        <label for="deleteMovies">Delete Movies</label>
+        <br>
+        <input type="checkbox" id="updateMovies" name="permissions" value="Update Movies">
+        <label for="updateMovies">Update Movies</label>
+        
+     
+        
+
+        <br><br>
+        <ul class="nav_list left">
+            <li><button class="nav_link" type="submit">Save</button></li>
+            <li><a href="/users/managmentUsers" class="nav_link" >Cancel</a></li>
+        </ul>
+        
+        
+    </form>
+</div>
+<%-include("partials/footerUsers", {}) %>
+<%-include("partials/footer", {}) %>

@@ -1,0 +1,27 @@
+<%-include("partials/header", {title:'Edit Member'}) %>
+<%-include("partials/menu", {active:baseUrl,admin:admin}) %>
+<h2>Members</h2>
+<h3>Edit Member: <%=member.firstName%> <%=member.lastName%></h3>
+<br>
+<div class="form_container">
+    <form method="POST" action="/subscriptions/updateMember">
+        <input type="hidden" name="memberId" placeholder="" required value="<%=member._id%>"/>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" placeholder="" required value="<%=member.name%>"/>
+        <br>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" placeholder="" required value="<%=member.email%>"/>
+        <br>
+        <label for="city">City: </label>
+        <input type="text" id="city" name="city" placeholder="" required value="<%=member.city%>"/>
+        <br><br>
+        <ul class="nav_list left">
+            <li><button class="nav_link" type="submit">Save</button></li>
+            <li><a href="/subscriptions" class="nav_link" >Cancel</a></li>
+        </ul>
+        
+        
+    </form>
+</div>
+
+<%-include("partials/footer", {}) %>

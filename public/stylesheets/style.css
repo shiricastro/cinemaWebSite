@@ -1,0 +1,108 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+}
+*{
+  box-sizing: border-box;
+}
+h1{text-align: center;}
+a ,button{
+  color: #00B7FF;
+}
+.nav_list {
+  list-style: none;
+  border-color: rgba(0,0,0,0);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nav_list li{
+  margin: 0 7px 5px;
+}
+.nav_list.left{
+  justify-content: flex-start;
+}
+.nav_list.left li{
+  margin-left: 0;
+  margin-right: 14px;
+}
+
+.nav_link{
+  background: white;
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.nav_link.on{
+  background: black;
+  color: white;
+}
+.listT1{
+  list-style: none;
+  border-color: rgba(0,0,0,0);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.listT1 >.itemT1{
+  width: 31%;
+  margin-bottom: 25px;
+  min-width: 500px;
+  margin-right: 2.3%;
+}
+.itemT1{
+  width: 100%;
+  border: 1px solid black;
+  padding: 10px;
+  
+}
+.margB1{
+  display: block;
+  margin-bottom: 5px;
+}
+
+.margT0{
+  margin-top: 0;
+}
+.margT1{
+  margin-top: 5px;
+}
+.wrapT1 {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.wrapT1 .image{
+  margin-right: 5%;
+  width: 25%;
+}
+.wrapT1 .text{
+  width: 67%;
+  border: 1px solid black;
+  padding: 0 10px 10px;
+}
+img{
+  max-width: 100%;
+}
+.subscribe_form{
+  display: none;
+  margin-top: 10px;
+}
+.subscribe_form.show{
+  display: block;
+}
+.boldType{
+  font-weight: bold;
+}

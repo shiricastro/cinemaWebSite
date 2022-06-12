@@ -1,0 +1,34 @@
+<%-include("partials/header", {title:'Update movie'}) %>
+<%-include("partials/menu", {active:baseUrl,admin:admin}) %>
+<h2>Movies</h2>
+<h3>Edit Movie: <%=movie.name%></h3>
+<br>
+<div class="form_container">
+    
+    <form method="POST" action="/movies/updateMovie">
+        <input type="hidden"  name="movieId" placeholder="" required value="<%=movie._id%>"/>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" placeholder="" required value="<%=movie.name%>"/>
+        <br>
+        <label for="genres">Genres: </label>
+        <input type="text" id="genres" name="genres" placeholder="" required value="<%=movie.genres%>"/>
+        <br>
+        <label for="image">Image Url: </label>
+        <input type="text" id="image" name="image" placeholder="" required required value="<%=movie.image%>"/>
+        <br>
+        <label for="premiered">Premiered: </label>
+        <input type="date" id="premiered" name="premiered" placeholder="" required required value="<%=movie.premiered%>"/>
+     
+        
+
+        <br><br>
+        <ul class="nav_list left">
+            <li><button class="nav_link" type="submit">Update</button></li>
+            <li><a href="/movies" class="nav_link" >Cancel</a></li>
+        </ul>
+        
+        
+    </form>
+</div>
+
+<%-include("partials/footer", {}) %>

@@ -1,0 +1,8 @@
+<nav>
+    <ul class="nav_list left">
+        <li><a class="nav_link <% if(active == 'subscriptions'){%> on <%}%>" href="/subscriptions">All Members</a></li>
+        <%if(admin || permissions.includes("Create Subscriptions")){%>
+        <li><a class="nav_link <% if(active == 'createMember'){%> on <%}%>" href="/subscriptions/createMember">Add Member</a></li>
+        <%}%>
+    </ul>
+</nav>
